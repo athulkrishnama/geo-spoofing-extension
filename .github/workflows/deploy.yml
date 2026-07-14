@@ -1,22 +1,35 @@
-name: Deployment workflow 
+name: Deployment
 
 on:
-  - push
-  - workflow_dispatch
-
+    push:
+        tags:
+            - 'v*'
+    workflow_dispatch:
+        
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    name: build
-    steps:
-      - uses: actions/checkout@v3
+    deploy:
+        name: Deployment
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            
+            - name: Install node
+              uses: actions/setup-node@v4
+              with: 
+                    node-version: 24 
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      
-      - name: installation
-        run: npm ci
+            - name: Install node modules
+              run: npm ci
 
-      - name: building
-        run: npm run build
+            - name: Create build
+              run: npm run build
+
+            - name: Install zip utility
+              run: sudo apt update && sudo apt install zip
+            
+            - name: zip folder
+              run: zip extension.zip dist/
+
+            - run: ls -la
+            
