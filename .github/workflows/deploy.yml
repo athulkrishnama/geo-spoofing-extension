@@ -32,7 +32,7 @@ jobs:
               run: sudo apt update && sudo apt install zip
             
             - name: zip folder
-              run: cd dist && zip -r extension.zip dist/*
+              run: cd dist && zip -r extension.zip .
 
             - name: Create release
               env: 
