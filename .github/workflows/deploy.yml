@@ -32,7 +32,7 @@ jobs:
               run: sudo apt update && sudo apt install zip
             
             - name: zip folder
-              run: zip extension.zip dist/*
+              run: cd dist && zip -r extension.zip dist/*
 
             - name: Create release
               env: 
@@ -40,6 +40,6 @@ jobs:
               uses: softprops/action-gh-release@v3
               with:
                 files: |
-                    extension.zip
+                    dist/extension.zip
                 generate_release_notes: true
             
