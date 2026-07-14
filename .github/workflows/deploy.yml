@@ -5,7 +5,10 @@ on:
         tags:
             - 'v*'
     workflow_dispatch:
-        
+
+permissions:
+    contents: write
+
 jobs:
     deploy:
         name: Deployment
@@ -31,5 +34,12 @@ jobs:
             - name: zip folder
               run: zip extension.zip dist/
 
-            - run: ls -la
+            - name: Create release
+              env: 
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              uses: softprops/action-gh-release@v3
+              with:
+                files: |
+                    extension.zip
+                generate_release_notes: true
             
