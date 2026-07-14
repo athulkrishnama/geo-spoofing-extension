@@ -1,32 +1,53 @@
-# React + TypeScript + Vite
+# Geo Spoofing Extension
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A browser extension that allows you to spoof your geographic location seamlessly. 
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Location Override**: Set custom GPS coordinates to simulate being anywhere in the world.
+- **Easy Toggle**: Turn the spoofing on or off with a single click.
+- **Privacy Focused**: Operates entirely locally in your browser.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How to Install the Extension in Chrome
 
-## Expanding the Oxlint configuration
+Follow these steps to install the extension directly from the latest GitHub release.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+### Step 1: Go to Releases
+On the right side of this repository, click on the **[Releases](../../releases)** section.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+### Step 2: Download the ZIP
+On the Releases page, locate the latest release and download the `extension.zip` file under the "Assets" section.
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### Step 3: Extract the ZIP
+Locate the downloaded `extension.zip` on your computer and extract it. This will typically create a folder containing the extension's files (most importantly, the `manifest.json`).
+
+### Step 4: Install in Chrome
+To load this extracted folder into Chrome, please follow this detailed guide:  
+**[How to Install an Unpacked Extension in Chrome](https://webkul.com/blog/how-to-install-the-unpacked-extension-in-chrome/)**
+
+---
+
+## Local Development Setup
+
+If you want to build this extension from the source code, follow these steps:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/athulkrishnama/geo-spoofing-extension.git
+   cd geo-spoofing-extension
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Build the extension**:
+   ```bash
+   npm run build
+   ```
+   *This will generate the built extension inside the `dist` directory.*
+
+4. **Load into Chrome**: Follow the link provided in Step 4 above, but select the newly generated `dist` folder.
